@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  */
 @RestController
 @RequestMapping("/empleado")
-public class EmpleadosControler {
+public class EmpleadosController {
     
     @Autowired
     private EmpleadoRepository repo;
