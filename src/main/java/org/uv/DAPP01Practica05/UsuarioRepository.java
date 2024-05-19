@@ -5,8 +5,6 @@
 package org.uv.DAPP01Practica05;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -14,6 +12,6 @@ import org.springframework.data.repository.query.Param;
  */
 
 public interface UsuarioRepository extends JpaRepository<Usuario, String>{
-    @Query("SELECT u FROM usuario u WHERE u.username = :username")
-    public Usuario getByUserName(@Param("username") String username);
+
+    public Usuario findByNombre(String nombre);
 }

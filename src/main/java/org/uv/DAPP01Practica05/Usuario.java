@@ -4,7 +4,6 @@
  */
 package org.uv.DAPP01Practica05;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario implements Serializable{
+public class Usuario {
     
     @Id
     @GeneratedValue(generator = "usuario_id_seq", strategy = GenerationType.SEQUENCE)
