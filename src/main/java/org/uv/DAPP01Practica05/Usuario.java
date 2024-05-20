@@ -23,6 +23,7 @@ public class Usuario {
     @Id
     @GeneratedValue(generator = "usuario_id_seq", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "usuario_id_seq", sequenceName = "usuario_id_seq", initialValue = 1, allocationSize = 1)
+    @Column(name = "id")
     private Long clave;
     
     @Column

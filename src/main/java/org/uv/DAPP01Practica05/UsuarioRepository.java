@@ -5,7 +5,8 @@
 package org.uv.DAPP01Practica05;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 /**
  *
  * @author ian
@@ -13,5 +14,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, String>{
 
-    public Usuario findByNombre(String nombre);
+    public Usuario findUsuarioByNombre(String nombre);
 }
