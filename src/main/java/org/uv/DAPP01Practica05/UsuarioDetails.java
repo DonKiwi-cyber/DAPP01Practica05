@@ -9,6 +9,8 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 /**
  *
@@ -28,14 +30,20 @@ public class UsuarioDetails implements UserDetails{
         return Arrays.asList(authority);
     }
 
+    
+    private BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+  
+    
     @Override
     public String getPassword() {
-        return usuario.getContrasena();
+        return  passwordEncoder().encode(usuario.getContrasena()) ;
     }
 
     @Override
     public String getUsername() {
-        return usuario.getNombre();
+            return usuario.getNombre();
     }
 
     @Override
