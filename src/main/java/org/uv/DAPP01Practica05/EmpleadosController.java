@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
  * @author ian
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/empleado")
 public class EmpleadosController {
     
@@ -34,12 +33,12 @@ public class EmpleadosController {
     @Autowired
     private UsuarioDetailService usuarioDetails;
     
-    @GetMapping("/all")
+    @GetMapping()
     public List<Empleado> list() {
         return repo.findAll();
     }
     
-    @GetMapping("/empleado/{id}")
+    @GetMapping("/{id}")
     public Empleado get(@PathVariable Long id) {
         Optional<Empleado> opcional = repo.findById(id);
         if(opcional.isPresent())
@@ -48,7 +47,7 @@ public class EmpleadosController {
             return null;
     }
     
-    @PutMapping("/empleado/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Empleado> put(@PathVariable Long id, @RequestBody Empleado input) {
         Optional<Empleado> opcional = repo.findById(id);
         if(opcional.isPresent()){
@@ -62,7 +61,7 @@ public class EmpleadosController {
         }
     }
     
-    @PostMapping("/empleado")
+    @PostMapping()
     public ResponseEntity<Empleado> post(@RequestBody Empleado input) {
         repo.save(input);
         if(repo.findById(input.getClave()).isPresent()){
@@ -73,7 +72,7 @@ public class EmpleadosController {
         }
     }
     
-    @DeleteMapping("/empleado/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Long> delete(@PathVariable Long id) {
         Optional<Empleado> opcional = repo.findById(id);
         if(opcional.isPresent()){
